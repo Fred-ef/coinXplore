@@ -9,14 +9,12 @@ export default function Markets() {
     document.title = 'coinXplore | Markets';
     const [coinsNumber, setCoinsNumber] = useState(0);
     const [loading, setLoading] = useState(true);
-    console.log("In Markets");
 
 
     useEffect(() => {
         const fetchCoinsNumber = async () => {
             try {
                 const data = await api.getCoinList();
-                console.log("Num monete: "+data.length);
                 setCoinsNumber(data.length);
             } catch(e) {
                 console.error("CoinTable:\n"+e);

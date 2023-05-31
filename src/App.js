@@ -11,9 +11,9 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Markets />} />
-        <Route path="/coins/:id" element={<Coin />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/coinXplore/" element={<Markets />} />
+        <Route path="/coinXplore/coins/:id" element={<Coin />} />
+        <Route path="/coinXplore/*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
