@@ -3,7 +3,6 @@ import { formatCurrency } from "../utils/currencyFormatter";
 import { useEffect, useState } from "react";
 import { Circles } from 'react-loader-spinner';
 import * as api from '../api/coinsApi';
-import { Link } from 'react-router-dom';
 
 export default function CoinInfo({ id }) {
     
