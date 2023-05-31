@@ -1,0 +1,42 @@
+ul, li {
+    list-style: none;
+}
+
+button {
+    box-shadow: none;
+    text-shadow: none;
+    border: none;
+    background-color: #0d1936;
+}
+
+.pagination {
+    margin-top: 1rem;
+}
+
+.paginationRack {
+    display: flex;
+}
+
+.pageItem, .currPageItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 40px;
+    width: 40px;
+    aspect-ratio: 1 !important;
+
+    margin: 0 0.2em;
+
+    border-radius: 0.5em;
+
+    transition: all 0.2s;
+}
+
+.pageItem:hover {
+    background-color: #172a58;
+}
+
+.hidden {
+    display: none;
+}

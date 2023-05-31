@@ -1,0 +1,74 @@
+.tableFrame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+table {
+  background-color: #0d1936;
+  width: 100%;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.185);
+  border-right: 1px solid rgba(255, 255, 255, 0.185);
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border-top: 1px solid rgba(255, 255, 255, 0.185);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.185);
+}
+
+/* table thead th {
+  background-color: #f5f5f5;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+  background-color: #e6e6e6;
+} */
+
+.coinLoadError {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+  .phoneHidden {
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  table td {
+    padding: 10px;
+    text-align: left;
+  }
+
+  .tabletHidden {
+    display: none;
+  }
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+  table {
+    width: 90%;
+  }
+
+}

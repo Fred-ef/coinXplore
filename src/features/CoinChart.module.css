@@ -1,0 +1,48 @@
+.chartContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.chartFrame {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    margin-top: 2rem;
+}
+
+.chart {
+    background-color: #0d1936;
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    border: 4px solid rgb(53, 162, 235, 0.2);
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .chartFrame {
+        display: none;
+    }
+    
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .chartFrame {
+        width: 70%;
+
+        margin-bottom: 1rem;
+    }   
+
+    .chart {
+        border: 4px solid rgb(53, 162, 235, 0.2);
+    }
+}

@@ -1,0 +1,111 @@
+*, *::before, *::after {
+  color: aliceblue;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1px;
+}
+
+body {
+  background-color: #0c1b44;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a, a:hover, a:focus, a:active, a:visited {
+  text-decoration: none;
+}
+
+button {
+  box-shadow: none;
+  border-radius: 0.5em;
+	padding: 10px;
+	font: inherit;
+	cursor: pointer;
+	outline: none;
+  transition: 0.1s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+}
+
+.loaderContainer {
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+
+  margin-top: 2rem;
+}
+
+.errorFrame {
+  background-color: rgba(255, 0, 0, 0.233);
+
+  padding: 3rem 5rem;
+  margin: 3rem 4rem;
+  
+  border: 3px solid red;
+  border-radius: 2rem;
+}
+
+.reloadLink {
+  background-color: rgba(128, 128, 128, 0.171);
+
+  padding: 0.5em;
+  margin: 1rem;
+
+  border: 1px solid rgba(128, 128, 128, 0.767);
+  border-radius: 0.5em;
+}
+
+.reloadLink:hover, .reloadLink:active {
+  background-color: rgba(128, 128, 128, 0.452);
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+  phoneHidden {
+    display: none;
+  }
+
+  .errorFrame {
+    font-size: xx-small;
+    margin: 1rem 0.5rem;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  tabletHidden {
+    display: none;
+  }
+
+  .errorFrame {
+    font-size: small;
+    padding: 2rem 3rem;
+  }
+
+  .reloadLink {
+    margin: 0;
+  }
+
+}
