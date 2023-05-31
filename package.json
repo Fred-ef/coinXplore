@@ -1,7 +1,7 @@
 {
   "name": "front-end",
   "version": "0.1.0",
-  "homepage": "https://fred-ef.github.io/coinxplore",
+  "homepage": "https://Fred-ef.github.io/coinXplore",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

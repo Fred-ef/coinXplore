@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/coinxplore/static/css/main.19e388b0.css",
+    "main.js": "/coinxplore/static/js/main.28264a2c.js",
+    "static/js/787.22edae46.chunk.js": "/coinxplore/static/js/787.22edae46.chunk.js",
+    "index.html": "/coinxplore/index.html",
+    "main.19e388b0.css.map": "/coinxplore/static/css/main.19e388b0.css.map",
+    "main.28264a2c.js.map": "/coinxplore/static/js/main.28264a2c.js.map",
+    "787.22edae46.chunk.js.map": "/coinxplore/static/js/787.22edae46.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.19e388b0.css",
+    "static/js/main.28264a2c.js"
+  ]
+}
