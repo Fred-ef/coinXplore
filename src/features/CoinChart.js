@@ -50,12 +50,12 @@ export default function CoinChart({ id }) {
             const currDateInMs = new Date().getTime();
             const lastWeekInMs = currDateInMs - 604800*1000;
             const intervalLength = parseInt((currDateInMs-lastWeekInMs)/response.prices.length);
-            let labels = []
-            for(let i=0; i<response.prices.length; i++) {
-                labels.push(new Date(lastWeekInMs+(i*intervalLength)).toLocaleString());
-            }
 
-            const chartData = response.prices.map(value => ({x: value[0], y: value[1].toFixed(8)}))
+            const labels = response.prices.map((_, index) => {
+                return new Date(lastWeekInMs+(index*intervalLength)).toLocaleString()
+            });
+            const chartData = response.prices.map(value => ({x: value[0], y: value[1].toFixed(8)}));
+
             setOptions({
                 plugins: {
                     legend: {
