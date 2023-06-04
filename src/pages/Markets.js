@@ -6,12 +6,12 @@ import * as api from '../api/coinsApi';
 import { Link } from 'react-router-dom';
 
 export default function Markets() {
-    document.title = 'coinXplore | Markets';
     const [coinsNumber, setCoinsNumber] = useState(0);
     const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
+        document.title = 'coinXplore | Markets';
         const fetchCoinsNumber = async () => {
             try {
                 const data = await api.getCoinList();

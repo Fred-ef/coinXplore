@@ -10,11 +10,14 @@ const coinsPageCache = new Map();
 
 export default function CoinTable({ coinsNumber }) {
 
+    // QUESTO VA ESEGUITO ALL'INIZIO
     const COINS_PER_PAGE = 100;
     const PAGES_NUMBER = Math.ceil(coinsNumber/COINS_PER_PAGE);
 
     const [loading, setLoading] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
+
+    // QUESTO VA ESEGUITO ALL'INIZIO
     if(searchParams.get('page') && ((searchParams.get('page')<=0 || searchParams.get('page')>PAGES_NUMBER))) {
         setSearchParams(params => {
             params.set('page', '1');
