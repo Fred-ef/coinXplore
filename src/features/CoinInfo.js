@@ -1,32 +1,32 @@
 import CoinInfoCSS from './CoinInfo.module.css';
 import { formatCurrency } from "../utils/currencyFormatter";
-import { useEffect, useState } from "react";
 import { Circles } from 'react-loader-spinner';
-import * as api from '../api/coinsApi';
+import useAxios from '../hooks/useAxios';
+import { getCoinDetailsUrl } from '../utils/getApiUrls';
 
 export default function CoinInfo({ id }) {
-    
-    const [response, setResponse] = useState(null);
-    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchPageNumber = async () => {
-            try {
-                const data = await api.getCoinDetails(id);
-                setResponse(data);
-            } catch(e) {
-                console.error("CoinInfo.js:\n"+e);
-            }
-            setLoading(false)
-        };
+    const url = getCoinDetailsUrl(id);
+    const [response, isLoading, error] = useAxios(url);
 
-        fetchPageNumber();
-    }, [id]);
+    // useEffect(() => {
+    //     const fetchPageNumber = async () => {
+    //         try {
+    //             const data = await api.getCoinDetails(id);
+    //             setResponse(data);
+    //         } catch(e) {
+    //             console.error("CoinInfo.js:\n"+e);
+    //         }
+    //         setLoading(false)
+    //     };
+
+    //     fetchPageNumber();
+    // }, [id]);
 
 
     // ########## Rendering ##########
 
-    if(loading) return(
+    if(isLoading) return(
         <Circles className="loaderContainer" type="ThreeDots" color="aliceblue" />
     );
 

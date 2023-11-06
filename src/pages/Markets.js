@@ -1,34 +1,35 @@
 import MarketsCSS from './Markets.module.css';
 import CoinTable from "../features/CoinTable";
 import { Circles } from 'react-loader-spinner';
-import { useEffect, useState } from 'react';
-import * as api from '../api/coinsApi';
 import { Link } from 'react-router-dom';
+import useAxios from '../hooks/useAxios';
+import { getCoinListUrl } from '../utils/getApiUrls';
 
 export default function Markets() {
-    const [coinsNumber, setCoinsNumber] = useState(0);
-    const [loading, setLoading] = useState(true);
+    const url = getCoinListUrl();
+    const [coinsNumber, isLoading, error] = useAxios(url);
+    // const [coinsNumber, setCoinsNumber] = useState(0);
 
 
-    useEffect(() => {
-        document.title = 'coinXplore | Markets';
-        const fetchCoinsNumber = async () => {
-            try {
-                const data = await api.getCoinList();
-                setCoinsNumber(data.length);
-            } catch(e) {
-                console.error("CoinTable:\n"+e);
-            }
-            setLoading(false);
-        };
+    // useEffect(() => {
+    //     document.title = 'coinXplore | Markets';
+    //     const fetchCoinsNumber = async () => {
+    //         try {
+    //             const data = await api.getCoinList();
+    //             setCoinsNumber(data.length);
+    //         } catch(e) {
+    //             console.error("CoinTable:\n"+e);
+    //         }
+    //         setLoading(false);
+    //     };
 
-        fetchCoinsNumber();
-    }, []);
+    //     fetchCoinsNumber();
+    // }, []);
 
 
     // ########## Rendering ##########
 
-    if(loading) return(
+    if(isLoading) return(
         <div className={MarketsCSS.container}>
             <Circles className="loaderContainer" type="ThreeDots" color="aliceblue" />
         </div>

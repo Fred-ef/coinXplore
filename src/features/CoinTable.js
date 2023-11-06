@@ -2,19 +2,19 @@ import PaginationButtons from "../features/PaginationButtons";
 import CoinTableCSS from './CoinTable.module.css';
 import CoinTableItem from "./CoinTableItem";
 import { Link, useSearchParams } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Circles } from 'react-loader-spinner';
-import * as api from '../api/coinsApi';
+import useAxios from "../hooks/useAxios";
+import { getMarketsUrl } from "../utils/getApiUrls";
 
-const coinsPageCache = new Map();
+// const coinsPageCache = new Map();
 
 export default function CoinTable({ coinsNumber }) {
 
     // QUESTO VA ESEGUITO ALL'INIZIO
     const COINS_PER_PAGE = 100;
     const PAGES_NUMBER = Math.ceil(coinsNumber/COINS_PER_PAGE);
-
-    const [loading, setLoading] = useState(false);
+    
     const [searchParams, setSearchParams] = useSearchParams();
 
     // QUESTO VA ESEGUITO ALL'INIZIO
@@ -25,28 +25,29 @@ export default function CoinTable({ coinsNumber }) {
         });
     }
     const [page, setPage] = useState((searchParams.get('page') ? searchParams.get('page') : 1));
-    const [marketsData, setMarketsData] = useState(null);
+    const url = getMarketsUrl(page, COINS_PER_PAGE);
+    const [marketsData, isLoading, error] = useAxios(url)
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const fetchCoins = async () => {
-            if(coinsPageCache.has(page.toString())) setMarketsData(coinsPageCache.get(page.toString()));
-            else {
-                setLoading(true);
-                try {
-                    const data = await api.getMarkets(page, COINS_PER_PAGE);
-                    setMarketsData(data);
-                    coinsPageCache.set(page.toString(), data);
-                } catch(e) {
-                    console.error("CoinTable:\n"+e);
-                }
-                setLoading(false);
-            }
-        };
+    //     const fetchCoins = async () => {
+    //         if(coinsPageCache.has(page.toString())) setMarketsData(coinsPageCache.get(page.toString()));
+    //         else {
+    //             setLoading(true);
+    //             try {
+    //                 const data = await api.getMarkets(page, COINS_PER_PAGE);
+    //                 setMarketsData(data);
+    //                 coinsPageCache.set(page.toString(), data);
+    //             } catch(e) {
+    //                 console.error("CoinTable:\n"+e);
+    //             }
+    //             setLoading(false);
+    //         }
+    //     };
         
-        fetchCoins();
-    }, [page]);
+    //     fetchCoins();
+    // }, [page]);
 
 
     // ########## Utility functions ##########
@@ -64,7 +65,7 @@ export default function CoinTable({ coinsNumber }) {
 
     // ########## Rendering ##########
 
-    if(loading) return(
+    if(isLoading) return(
         <Circles className="loaderContainer" type="ThreeDots" color="aliceblue" />
     );
 

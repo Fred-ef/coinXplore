@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Line } from 'react-chartjs-2';
 import CoinChartCSS from './CoinChart.module.css';
-import * as api from '../api/coinsApi';
+import useAxios from "../hooks/useAxios";
+import { getCoinChartUrl } from "../utils/getApiUrls";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -27,23 +28,27 @@ import {
   
 
 export default function CoinChart({ id }) {
-    
-    const [response, setResponse] = useState(null);
+
+    const url = getCoinChartUrl(id);
+    const [response, isLoading, error] = useAxios(url);
+
+    // const [response, setResponse] = useState(null);
     const [options, setOptions] = useState(null);
     const [data, setData] = useState(null);
 
-    useEffect(() => {
-        const fetchPageNumber = async () => {
-            try {
-                const data = await api.getCoinChart(id);
-                setResponse(data);
-            } catch(e) {
-                console.error("CoinChart.js:\n"+e);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchPageNumber = async () => {
+    //         try {
+                
+    //             const data = await api.getCoinChart(id);
+    //             setResponse(data);
+    //         } catch(e) {
+    //             console.error("CoinChart.js:\n"+e);
+    //         }
+    //     };
 
-        fetchPageNumber();
-    }, [id]);
+    //     fetchPageNumber();
+    // }, [id]);
 
     useEffect(() => {
         if(response) {
